@@ -22,4 +22,5 @@ return [
     "nameTypeRoom" => "name type room",
     "idTypeRoom" => "id type room",
     "codeTypeRoom" => "code type room",
+    'invalid_excel_value' => 'The excel value must be a boolean and its value must be true.',
 ];

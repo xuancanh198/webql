@@ -37,6 +37,9 @@ class BaseRequest extends FormRequest
     protected function checkFilterTime($start, $end, $type)
     {
         $messages = [];
+        if($start === null &&  $end === null && $type === null) {
+            return [];
+        }
         if ($start === null || $end === null || $type === null) {
             $messages[] = trans('message.filter_time_required');
         } else {
@@ -58,6 +61,9 @@ class BaseRequest extends FormRequest
             $data['end'] = $this->ConvertData->convertToDate($this->end);
         }
 
+        if ($this->excel) {
+            $data['excel'] = $this->ConvertData->convertToBool($this->excel);
+        }
         if (!empty($data)) {
             $this->merge($data);
         }
@@ -75,12 +81,15 @@ class BaseRequest extends FormRequest
             if ($this->has('end') && !$this->end) {
                 $messages[] = trans('message.end_date_format');
             }
+            if ($this->has('excel') && $this->excel === false) {
+                $messages[] = trans('message.invalid_excel_value');
+            }
 
             $messages = array_merge($messages, $this->checkFilterTime($this->start, $this->end, $this->typeTime));
 
             if (!empty($messages)) {
                 foreach ($messages as $message) {
-                    $validator->errors()->add('filter_error', $message);
+                    $validator->errors()->add('validate_error', $message);
                 }
             }
         });

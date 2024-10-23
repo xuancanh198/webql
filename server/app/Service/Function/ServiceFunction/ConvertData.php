@@ -18,7 +18,21 @@ class ConvertData
           return false;
         }
     }
-
+    public function convertToBool(string $excel)
+    {
+        try {
+            $excel = strtolower(trim($excel));
+          
+            if ($excel === 'true') {
+                return true;
+            } elseif ($excel === 'false') {
+                return false;
+            } 
+            return false;
+        } catch (Exception $e) {
+          return false;
+        }
+    }
     public function validateDate(string $dateString): string
     {
         $result = $this->convertToDate($dateString);

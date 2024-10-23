@@ -17,7 +17,7 @@ export const getListFunService = (objectGet) => {
 
     const filtersBase64Param = objectGet.filtersBase64 !== null && objectGet.filtersBase64.length > 0 ? `&filtersBase64=${objectGet.filtersBase64}` : '';
 
-    const apiUrl = `admin/${objectGet.routerLink}/?page=${objectGet.page}&limit=${objectGet.limit}${searchParam}${fitterParam}${excelParam}${filtersBase64Param}`;
+    const apiUrl = `admin/${objectGet.routerLink}?page=${objectGet.page}&limit=${objectGet.limit}${searchParam}${fitterParam}${excelParam}${filtersBase64Param}`;
     APILink.get(apiUrl)
       .then((response) => {
         if (response.data.status === "success" && response.data.type === "normal") {
