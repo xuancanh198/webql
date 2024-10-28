@@ -52,7 +52,9 @@ class BaseRequest extends FormRequest
     public function prepareForValidation()
     {
         $data = [];
-
+        if($this->isMethod('put') || $this->isMethod('delete')){
+           $data['id'] =  $this->route('id');
+        }
         if ($this->start) {
             $data['start'] = $this->ConvertData->convertToDate($this->start);
         }
@@ -95,7 +97,7 @@ class BaseRequest extends FormRequest
         });
     }
 
-    protected function getMethodDelete($table)
+    protected function getMethodIdDeleteAndUpdat($table)
     {
         return ['id' => "required|integer|exists:$table,id"];
     }
@@ -133,6 +135,7 @@ class BaseRequest extends FormRequest
             'integer' =>trans('message.integer'),
             'string' => trans('message.string'),
             'date' => trans('message.date'),
+            'unique' => trans('message.unique'),
             'in' => trans('message.in'),
         ];
     }

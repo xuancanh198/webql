@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Requests;
-
 use App\Http\Requests\BaseRequest;
 
-class TypeRoomRequest extends BaseRequest
+class FloorRequest extends BaseRequest
 {
-
     public function authorize(): bool
     {
         return true;
@@ -19,7 +17,7 @@ class TypeRoomRequest extends BaseRequest
         if ($this->isMethod('post') || $this->isMethod('put')) {
             $rule = [
                 'name' => 'required|string|min:4|max:255',
-                'code' => 'required|string|min:5|max:60',
+                'code' => 'required|string|min:1|max:60',
             ];
             if($this->isMethod('post')){
                 $rule['code'] .= '|unique:tbl_type_room,code,';

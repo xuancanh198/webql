@@ -91,16 +91,16 @@ export const getAllData = (objectGet) => {
 export const addFunService = (objectCreate) => {
   return (dispatch) => {
     dispatch(setLoading(true));
-    APILink.post(`admin/${objectCreate.routerLink}/create`, objectCreate.data)
+    APILink.post(`admin/${objectCreate.routerLink}s`, objectCreate.data)
       .then((response) => {
         if (response.data.status === "success") {
           dispatch(objectCreate.getList());
-          toast.success(response.data.mess);
+          toast.success(response.data.message);
           dispatch(setModalAdd(false))
           objectCreate.resetForm();
         }
        else if (response.data.status === "errorValidate") {
-          toast.error(response.data.mess);
+          toast.error(response.data.message);
           Object.keys(response.data.errors).forEach((field) => {
             const fieldErrors = response.data.errors[field];
             fieldErrors.forEach((error) => {
@@ -108,7 +108,7 @@ export const addFunService = (objectCreate) => {
             });
           });
         } else {
-          toast.error(response.data.mess);
+          toast.error(response.data.message);
         }
 
       })
@@ -129,7 +129,7 @@ export const updateFunService = (objectUpdate, configStatus = false) => {
   } : null;
   return (dispatch) => {
     dispatch(setLoading(true));
-    const url = `admin/${objectUpdate.routerLink}/update/${objectUpdate.id}`;
+    const url = `admin/${objectUpdate.routerLink}/${objectUpdate.id}`;
 
     const request = configStatus
       ? APILink.post(`${url}?_method=PUT`, data, config)
@@ -139,11 +139,11 @@ export const updateFunService = (objectUpdate, configStatus = false) => {
       .then((response) => {
         if (response.data.status === "success") {
           dispatch(objectUpdate.getList());
-          toast.success(response.data.mess);
+          toast.success(response.data.message);
           dispatch(setModalUpdate(false));
           objectUpdate.resetForm();
         }  else if (response.data.status === "errorValidate") {
-          toast.error(response.data.mess);
+          toast.error(response.data.message);
           Object.keys(response.data.errors).forEach((field) => {
             const fieldErrors = response.data.errors[field];
             fieldErrors.forEach((error) => {
@@ -151,7 +151,7 @@ export const updateFunService = (objectUpdate, configStatus = false) => {
             });
           });
         } else {
-          toast.error(response.data.mess);
+          toast.error(response.data.message);
         }
       })
       .catch((error) => {
@@ -166,15 +166,15 @@ export const updateFunService = (objectUpdate, configStatus = false) => {
 export const deleteFunService = (routerLink, id, listFun) => {
   return (dispatch) => {
     dispatch(setLoading(true));
-    APILink.delete(`admin/${routerLink}/delete/${id}`)
+    APILink.delete(`admin/${routerLink}/${id}`)
       .then((response) => {
         if (response.data.status === "success") {
           dispatch(listFun());
-          toast.success(response.data.mess);
+          toast.success(response.data.message);
           dispatch(setModalUpdate(false));
         }
         else {
-          toast.error(response.data.mess);
+          toast.error(response.data.message);
         }
       })
       .catch((error) => {

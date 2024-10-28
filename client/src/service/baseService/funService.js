@@ -18,7 +18,6 @@ export const chaneFtiler=(data, filters)=>{
     }
     if (!found) {
       filters.push(data);
-    }
-    dispatch(setFilter(btoa(JSON.stringify(filters))));
+    }    dispatch(setFilter(btoa(JSON.stringify(filters))));
     }
 }

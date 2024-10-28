@@ -17,5 +17,21 @@ class Controller extends BaseController
             'result' => $result,
         ]);
     }
-
+    public function returnResponseBase($resource, $requets, $result)
+    {
+        if ($requets->excel !== true) {
+            $data = $resource::collection($result->items());
+            $result->setCollection($data->collect());
+        }
+        return $this->returnResponseData('success', $result, $requets->excel !== true ? 'normal' : "excel");
+    }
+    public function returnResponseMessgae($status = "success", $messageKey){
+        return response()->json([
+            'status' => $status,
+            'message' =>    trans('message.acctionMessage', [
+                'attribute' => trans("message.$messageKey"),
+                'status' => trans("message.$status"),
+            ]),
+        ]);
+    }
 }

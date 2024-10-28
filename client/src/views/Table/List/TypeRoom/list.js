@@ -12,7 +12,7 @@ import { convertDateTime } from '../../../../service/FunService/funweb';
 import { updateTypeRoom  ,deleteTypeRoom} from '../../../../service/baseService/cruds';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import CIcon from '@coreui/icons-react'; // Correct import for default export
+import CIcon from '@coreui/icons-react';
 import { cilArrowTop, cilArrowBottom } from '@coreui/icons';
 import {
   CCardBody,
@@ -90,8 +90,8 @@ function List({ data }) {
   });
  const deleteTypeRoomId = (id) => {
     confirmAlert({
-      title:t('action.authentication.delete', { attribute: t('attribute.role')}),
-      message: t('action.message.delete', { attribute: t('attribute.role')}),
+      title:t('action.authentication.delete', { attribute: t('page.typeRoom')}),
+      message: t('action.message.delete', { attribute: t('page.typeRoom')}),
       buttons: [
         {
           label: t('actionView.delete'),

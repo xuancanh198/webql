@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Admin\Room;
 
 use App\Http\Controllers\Controller;
-use App\Service\Function\Execute\TypeRoomService;
-use App\Http\Resources\TypeRoomResource;
-use App\Http\Requests\TypeRoomRequest;
-class TypeRoomController extends Controller
+use Illuminate\Http\Request;
+use App\Service\Function\Execute\FloorService;
+use App\Http\Resources\FloorResource;
+use App\Http\Requests\FloorRequest;
+class FloorController extends Controller
 {
     protected $service;
     protected $request;
-    public function __construct(TypeRoomService $service, TypeRoomRequest $request)
+    public function __construct(FloorService $service, FloorRequest $request)
     {
         $this->service = $service;
         $this->request = $request;
@@ -18,7 +19,7 @@ class TypeRoomController extends Controller
     public function index()
     {
         $result = $this->service->getList();
-        return $this->returnResponseBase(TypeRoomResource::class, $this->request, $result);
+        return $this->returnResponseBase(FloorResource::class, $this->request, $result);
     }
 
     public function store() {

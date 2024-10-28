@@ -2,17 +2,17 @@
 
 namespace App\Service\Function\Execute;
 
-use App\Models\Room\TypeRoomModel;
-use App\Http\Requests\TypeRoomRequest;
+use App\Models\Room\FloorModel;
+use App\Http\Requests\FloorRequest;
 use App\Service\Function\Base\BaseService;
 use Carbon\Carbon;
 
-class TypeRoomService extends BaseService
+class FloorService extends BaseService
 {
     protected $model;
     protected $request;
     protected $columSearch = ['name', 'code'];
-    public function __construct(TypeRoomModel $model, TypeRoomRequest $request)
+    public function __construct(FloorModel $model, FloorRequest $request)
     {
         $this->model = $model;
         $this->request = $request;

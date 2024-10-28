@@ -1,6 +1,10 @@
 <?php
 return [
+    'success' => 'Thành công',
+    'fail' => 'Thất bại',
+    "exists" => ":attribute không tồn tại trong hệ thống",
     'required' => 'Trường :attribute là bắt buộc.',
+    'unique' => 'Giá trị này đã tồn tại trong trường  :attribute của hệ thống.',
     'email' => 'Trường :attribute phải là một địa chỉ email hợp lệ.',
     'max' => 'Trường :attribute không được vượt quá :max ký tự.',
     'min' => 'Trường :attribute phải có ít nhất :min ký tự.',
@@ -22,4 +26,11 @@ return [
     "nameTypeRoom" => "tên loại phòng",
     "idTypeRoom" => "id  loại phòng",
     "codeTypeRoom" => "mã loại phòng",
+    "nameFloor" => "tên tầng",
+    "idFloor" => "id tầng",
+    "codeFloor" => "mã tầng",
+    'acctionMessage' => ':attribute :status',
+    "createAction" => "Thêm mới",
+     "updateAction" => "Cập nhật",
+      "deleteAction" => "Xóa"
 ];

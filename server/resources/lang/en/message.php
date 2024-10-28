@@ -2,6 +2,7 @@
 return [
     'required' => 'The :attribute field is required.',
     'email' => 'The :attribute must be a valid email address.',
+    'unique' => 'This value already exists in the :attribute field of the system.',
     'max' => 'The :attribute may not be greater than :max characters.',
     'min' => 'The :attribute must be at least :min characters.',
     'integer' => 'The :attribute must be an integer.',

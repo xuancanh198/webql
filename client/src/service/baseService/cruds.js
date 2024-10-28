@@ -184,7 +184,7 @@ export const updateTypeRoom = (data, id,resetForm ) => {
 export const deleteTypeRoom = (id) => {
   const  routerLink = "room/typeRoom";
   return (dispatch) => {
-    dispatch(deleteFunService(routerLink, id,getListBuilding ));
+    dispatch(deleteFunService(routerLink, id,getListTypeRoom ));
   };
 };
 
