@@ -76,9 +76,9 @@ function List({ data }) {
     initialValues: {
       name: '',
       code: '',
-      price: 1,
-      unit: unit,
-      quantity: 1
+      price: 1 ?? dataDeatil?.price,
+      unit: unit ?? dataDeatil?.unit,
+      quantity: 1 ?? dataDeatil?.quantity,
     },
     validationSchema: Yup.object({
       name: Yup.string()

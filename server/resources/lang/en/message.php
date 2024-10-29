@@ -23,5 +23,11 @@ return [
     "nameTypeRoom" => "name type room",
     "idTypeRoom" => "id type room",
     "codeTypeRoom" => "code type room",
+    "nameService" => "Service Name",
+    "idService" => "Service ID",
+    "codeService" => "Service Code",
+    "priceService" => "Service Price",
+    "unitService" => "Unit",
+    "quantityService" => "Quantity",
     'invalid_excel_value' => 'The excel value must be a boolean and its value must be true.',
 ];
