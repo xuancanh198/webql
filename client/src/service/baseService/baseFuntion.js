@@ -91,7 +91,7 @@ export const getAllData = (objectGet) => {
 export const addFunService = (objectCreate) => {
   return (dispatch) => {
     dispatch(setLoading(true));
-    APILink.post(`admin/${objectCreate.routerLink}s`, objectCreate.data)
+    APILink.post(`admin/${objectCreate.routerLink}`, objectCreate.data)
       .then((response) => {
         if (response.data.status === "success") {
           dispatch(objectCreate.getList());
