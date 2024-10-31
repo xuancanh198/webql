@@ -10,5 +10,5 @@ class RoleModel extends Model
     use HasFactory;
     protected $table = "tbl_role";
     protected $primary = 'id';
-    protected $fillable = ['code', 'name', 'created_at', 'updated_at'];
+    protected $fillable = ['name', 'role_detail','created_at', 'updated_at'];
 }

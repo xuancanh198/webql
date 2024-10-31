@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Requests;
+
 use App\Http\Requests\BaseRequest;
-class RoleRequest extends BaseRequest
+
+class PermisstionRequest extends BaseRequest
 {
     public function authorize(): bool
     {
@@ -16,19 +18,20 @@ class RoleRequest extends BaseRequest
         if ($this->isMethod('post') || $this->isMethod('put')) {
             $rule = [
                 'name' => 'required|string|min:4|max:255',
+                'code' => 'required|string|min:5|max:60',
             ];
             if($this->isMethod('post')){
-                $rule['name'] .= '|unique:tbl_role,name,';
+                $rule['code'] .= '|unique:tbl_type_room,code,';
             }
             elseif($this->isMethod('put')){
-                $rule['name'] .= '|unique:tbl_role,name,' .$this->id;
+                $rule['code'] .= '|unique:tbl_type_room,code,' .$this->id;
                 
-                $rule = array_merge($rule, $this->getMethodIdDeleteAndUpdat('tbl_role'));
+                $rule = array_merge($rule, $this->getMethodIdDeleteAndUpdat('tbl_type_room'));
             }
             } elseif ($this->isMethod('get')) {
                 $rule = $this->getMethodGet();
             } elseif ($this->isMethod('delete')) {
-                $rule =$this->getMethodIdDeleteAndUpdat('tbl_role');
+                $rule =$this->getMethodIdDeleteAndUpdat('tbl_type_room');
             }
         return $rule;
     }
@@ -42,8 +45,9 @@ class RoleRequest extends BaseRequest
     {
         $attributes = $this->attributesBase();
        return (array_merge($attributes, [
-            'name' => trans('message.nameRole'), 
-            'id' => trans('message.idRole'), 
+            'name' => trans('message.namePermisstion'), 
+            'code' => trans('message.codePermisstion'), 
+            'id' => trans('message.idPermisstion'), 
         ]));
     }
 }

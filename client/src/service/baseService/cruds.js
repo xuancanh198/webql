@@ -696,7 +696,7 @@ export const getListPermisstion = (titel = null, page = 1, limit = 10, search = 
     fitler :fitler,
     exportExcel : exportExcel,
     filtersBase64 :filtersBase64,
-    routerLink : 'staff/permission',
+    routerLink : 'permission/permission',
     titelnameExcel : ['Stt','id đồ đạc vật dụng','tên đồ đạc vật dụng','mã đồ đạc vật dụng','giá mua đồ đạc vật dụng','thời gian tạo', ' thời gian cập nhật'],
     columExcel :['id','name','code','price','created_at','updated_at'],
     titelExcel : titel,
@@ -709,7 +709,7 @@ export const getAllPermisstion= (exportExcel = false) => {
   const objectGet ={
     getList: setFurnitureAll,
     exportExcel:exportExcel,
-    routerLink : 'staff/permission',
+    routerLink : 'permission/permission',
 
   } 
   return (dispatch) => {
@@ -718,7 +718,7 @@ export const getAllPermisstion= (exportExcel = false) => {
 };
 export const addPermisstion = (data,resetForm ) => {
   const objectCreate ={
-    routerLink : 'staff/permission',
+    routerLink : 'permission/permission',
     data : data,
     resetForm : resetForm,
     getList : getListPermisstion
@@ -730,7 +730,7 @@ export const addPermisstion = (data,resetForm ) => {
 export const updatePermisstion = (id, data ,resetForm ) => {
   const objectUpdate ={
     id : id,
-    routerLink : 'staff/permission',
+    routerLink : 'permission/permission',
     data : data,
     resetForm : resetForm,
     getList : getListPermisstion
@@ -741,7 +741,7 @@ export const updatePermisstion = (id, data ,resetForm ) => {
 };
 
 export const deletePermisstion = (id) => {
-  const  routerLink = 'staff/permission';
+  const  routerLink = 'permission/permission';
   return (dispatch) => {
     dispatch(deleteFunService(routerLink, id ,getListPermisstion ));
   };
@@ -755,7 +755,7 @@ export const getListAcction= (titel = null, page = 1, limit = 10, search = null,
     fitler :fitler,
     exportExcel : exportExcel,
     filtersBase64 :filtersBase64,
-    routerLink : 'staff/acction',
+    routerLink : 'permission/action',
     titelnameExcel : ['Stt','id đồ đạc vật dụng','tên đồ đạc vật dụng','mã đồ đạc vật dụng','giá mua đồ đạc vật dụng','thời gian tạo', ' thời gian cập nhật'],
     columExcel :['id','name','code','price','created_at','updated_at'],
     titelExcel : titel,
@@ -768,7 +768,7 @@ export const getAllAcction= (exportExcel = false) => {
   const objectGet ={
     getList: setFurnitureAll,
     exportExcel:exportExcel,
-    routerLink : 'staff/acction',
+    routerLink : 'permission/action',
 
   } 
   return (dispatch) => {
@@ -777,7 +777,7 @@ export const getAllAcction= (exportExcel = false) => {
 };
 export const addAcction = (data,resetForm ) => {
   const objectCreate ={
-    routerLink : 'staff/acction',
+    routerLink : 'permission/action',
     data : data,
     resetForm : resetForm,
     getList : getListAcction
@@ -789,7 +789,7 @@ export const addAcction = (data,resetForm ) => {
 export const updateAcction = (id, data ,resetForm ) => {
   const objectUpdate ={
     id : id,
-    routerLink : 'staff/acction',
+    routerLink : 'permission/action',
     data : data,
     resetForm : resetForm,
     getList : getListAcction
@@ -800,7 +800,7 @@ export const updateAcction = (id, data ,resetForm ) => {
 };
 
 export const deleteAcction = (id) => {
-  const  routerLink = 'staff/acction';
+  const  routerLink = 'permission/action';
   return (dispatch) => {
     dispatch(deleteFunService(routerLink, id ,getListAcction ));
   };

@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Staff;
+namespace App\Http\Controllers\Admin\Permisstion;
 
 use App\Http\Controllers\Controller;
-use App\Service\Function\Execute\RoleService;
-use App\Http\Resources\RoleResource;
-use App\Http\Requests\RoleRequest;
-class RoleController extends Controller
+use App\Service\Function\Execute\ActionService;
+use App\Http\Resources\ActionResource;
+use App\Http\Requests\ActionRequest;
+
+class ActionController extends Controller
 {
-    protected $service;
+     protected $service;
     protected $request;
-    public function __construct(RoleService $service, RoleRequest $request)
+    public function __construct(ActionService $service, ActionRequest $request)
     {
         $this->service = $service;
         $this->request = $request;
@@ -18,7 +19,7 @@ class RoleController extends Controller
     public function index()
     {
         $result = $this->service->getList();
-        return $this->returnResponseBase(RoleResource::class, $this->request, $result);
+        return $this->returnResponseBase(ActionResource::class, $this->request, $result);
     }
 
     public function store() {
