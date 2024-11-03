@@ -48,7 +48,16 @@ return [
     "idAction" => "id hành động",
     "codeAction" => "Mã hành động",
     'acctionMessage' => ':attribute :status',
+    'usernameStaff' => 'Tên đăng nhập',
+    'passwordStaff' => 'Mật khẩu',
+    'fullnameStaff' => 'Họ và tên',
+    'addressStaff' => 'Địa chỉ',
+    'roleIdStaff' => 'ID vai trò',
+    'emailStaff' => 'Email',
+    'phoneNumberStaff' => 'Số điện thoại',
+    'imageStaff' => 'Hình ảnh',
+    'noteStaff' => 'Ghi chú',
     "createAction" => "Thêm mới",
-     "updateAction" => "Cập nhật",
-      "deleteAction" => "Xóa"
+    "updateAction" => "Cập nhật",
+    "deleteAction" => "Xóa"
 ];

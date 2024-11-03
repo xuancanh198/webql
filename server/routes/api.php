@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\Staff\RoleController;
 use App\Http\Controllers\Admin\Permisstion\PermisstionController;
 use App\Http\Controllers\Admin\Permisstion\ActionController;
 use App\Http\Controllers\Admin\Staff\AuthController;
-
+use App\Http\Controllers\Admin\Staff\StaffController;
 Route::middleware(['admin.middleware'])->group(function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::post('/login', [AuthController::class, 'login']);
@@ -20,6 +20,12 @@ Route::middleware(['admin.middleware'])->group(function () {
                 Route::post('/', [RoleController::class, 'store']);
                 Route::put('/{id}', [RoleController::class, 'update']);
                 Route::delete('/{id}', [RoleController::class, 'destroy']);
+            });
+            Route::group(['prefix' => 'staff'], function () {
+                Route::get('/', [StaffController::class, 'index']);
+                Route::post('/', [StaffController::class, 'store']);
+                Route::put('/{id}', [StaffController::class, 'update']);
+                Route::delete('/{id}', [StaffController::class, 'destroy']);
             });
         });
         Route::group(['prefix' => 'permission'], function () {

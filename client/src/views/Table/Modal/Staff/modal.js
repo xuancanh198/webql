@@ -16,13 +16,13 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import ImageUploading from 'react-images-uploading';
 import CIcon from '@coreui/icons-react';
 import { cilUser, cilLockLocked, cilEnvelopeClosed, cilPhone } from '@coreui/icons';
-import {setModalAdd} from "../../../../redux/accction/listTable";
+import { setModalAdd } from "../../../../redux/accction/listTable";
 import { getAllRole } from "../../../../service/baseService/cruds";
 function Example({ title }) {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-
-    const show = useSelector((state) => state.listTable.modalAdd) ;
+    const [addressDetail, setAddressDetail] = useState("");
+    const show = useSelector((state) => state.listTable.modalAdd);
     const [note, setNote] = useState('')
     const [togglePassword, settogglePassword] = useState(false);
     const [images, setImages] = useState([]);
@@ -71,8 +71,9 @@ function Example({ title }) {
     }, [ward]);
 
     useEffect(() => {
-        setAddress(provinceValue + " ," + districtValue + " ," + wardValue);
-    }, [provinceValue, districtValue, wardValue]);
+        setAddress(`${provinceValue}, ${districtValue}, ${wardValue}, ${addressDetail}`);
+    }, [provinceValue, districtValue, wardValue, addressDetail]);
+
 
     useEffect(() => {
         formik.setValues({
@@ -142,14 +143,14 @@ function Example({ title }) {
                 .max(15, t('validation.attribute.max', { attribute: t('lableView.staff.phoneNumber'), max: 15 }))
                 .required(t('validation.attribute.required', { attribute: t('lableView.staff.phoneNumber') })),
 
-            addressDetail: Yup.string()
-                .required(t('validation.attribute.required', { attribute: t('lableView.staff.addressDetail') })),
+            // addressDetail: Yup.string()
+            //     .required(t('validation.attribute.required', { attribute: t('lableView.staff.addressDetail') })),
             roleId: Yup.string()
                 .matches(/^[0-9]*$/, t('validation.attribute.matches', { attribute: t('lableView.staff.roleId') }))
                 .min(1, t('validation.attribute.min', { attribute: t('lableView.staff.roleId'), min: 1 }))
                 .required(t('validation.attribute.required', { attribute: t('lableView.staff.roleId') }))
         }),
-        onSubmit: (values, {resetForm}) => {
+        onSubmit: (values, { resetForm }) => {
             addStaffFun(values, resetForm);
         }
     });
@@ -213,16 +214,16 @@ function Example({ title }) {
                                             <div className="upload__image-wrapper">
                                                 {imageList.length === 0 ? (
                                                     <div className='img-form-div'>
-                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmC3sLJeXtH4IeRNpKytSZxoIFGWEmsLmP9Q&s" className='img-form'/>
+                                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmC3sLJeXtH4IeRNpKytSZxoIFGWEmsLmP9Q&s" className='img-form' />
                                                     </div>
                                                 ) : (
                                                     imageList.map((image, index) => (
-                                                    <div key={index}  className='img-form-div'>
-                                                        <img src={image['data_url']} alt="" width="100" className='img-form form-img-div'/>
-                                                        <div className="image-item__btn-wrapper">
-                                                        <p onClick={() => onImageRemove(index)}>x</p>
+                                                        <div key={index} className='img-form-div'>
+                                                            <img src={image['data_url']} alt="" width="100" className='img-form form-img-div' />
+                                                            <div className="image-item__btn-wrapper">
+                                                                <p onClick={() => onImageRemove(index)}>x</p>
+                                                            </div>
                                                         </div>
-                                                    </div>
                                                     ))
                                                 )}
                                             </div>
@@ -379,19 +380,16 @@ function Example({ title }) {
 
                                 </Form.Group>
                                 <Form.Group as={Col} xl="12" lg="12" md="12" sm="12" className='mb-3 mt-3'>
-                                    <Form.Label> {t('lableView.staff.addressDetail')}</Form.Label>
+                                    <Form.Label>{t('lableView.staff.addressDetail')}</Form.Label>
                                     <Form.Control
                                         type="text"
                                         name="addressDetail"
-                                        value={formik.values.addressDetail}
-                                        onChange={formik.handleChange}
+                                        value={addressDetail}
+                                        onChange={(e) => setAddressDetail(e.target.value)}
                                         onBlur={formik.handleBlur}
-                                        isInvalid={formik.touched.addressDetail && formik.errors.addressDetail}
                                     />
-                                    <Form.Control.Feedback type="invalid">
-                                        {formik.errors.addressDetail}
-                                    </Form.Control.Feedback>
                                 </Form.Group>
+
                                 <Form.Group as={Col} xl="12" lg="12" md="12" sm="12" className='mb-3 mt-3'>
                                     <div
                                         className='btn_upload_img'

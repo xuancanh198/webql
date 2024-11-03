@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Staff\RoleModel;
 class StaffModel extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -30,4 +31,7 @@ class StaffModel extends Authenticatable
         'created_at',
         'updated_at',
     ];
+    public function role(){
+        return  $this->belongsTo(RoleModel::class, 'role_id');
+    }
 }

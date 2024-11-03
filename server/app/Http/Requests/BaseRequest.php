@@ -137,6 +137,10 @@ class BaseRequest extends FormRequest
             'date' => trans('message.date'),
             'unique' => trans('message.unique'),
             'in' => trans('message.in'),
+            'exists' => trans('message.exists'),
+            'file' => trans('message.file'),
+            'image' => trans('message.image'),
+            'regex' => trans('message.regex'),
         ];
     }
 

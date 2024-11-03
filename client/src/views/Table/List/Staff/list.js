@@ -62,13 +62,13 @@ function List({ data }) {
   const page = useSelector((state) => state.listTable.page);
   const limit = useSelector((state) => state.listTable.limit);
   const listRole = useSelector((state) => state.listTable.listRoleAll);
-
+  
   let filters = useSelector((state) => state.listTable.filters);
   const maxNumber = 1;
   useEffect(() => {
     const fetchData = async () => {
       await dispatch(getListProvince());
-      dispatch(getAllRole(page, limit));
+      dispatch(getAllRole(true));
     };
     if (show === true) {
       fetchData();
@@ -105,7 +105,7 @@ function List({ data }) {
         passwordDefault: dataDeatil.password_default || '',
         fullname: dataDeatil.fullname || '',
         address: dataDeatil.address || '',
-        roleId: dataDeatil.roleId || 1,
+        roleId: dataDeatil.role_id || 1,
         email: dataDeatil.email || '',
         phoneNumber: dataDeatil.phoneNumber || '',
         note: dataDeatil.note || '',
@@ -454,13 +454,13 @@ function List({ data }) {
                     <Form.Group as={Col} xl="4" lg="6" md="6" sm="12" className='mb-3 mt-3 '>
                       {checked === false ?
                         (
-                          <p> <span className='lable-form'>{t('attribute.role')}</span>  : {dataDeatil && dataDeatil !== null && dataDeatil.role_table.name ? dataDeatil.role_table.name : t('noData')} </p>
+                          <p> <span className='lable-form'>{t('attribute.role')}</span>  : {dataDeatil?.role?.name ?? t('noData')} </p>
                         ) : (
                           <>
                             <Form.Select aria-label="Default select example" name="roleId" onChange={(e) => setRoleId(e.target.value)}>
                               <option key= {dataDeatil && dataDeatil !== null && dataDeatil.role_id ? dataDeatil.role_id : null}
                                value={dataDeatil && dataDeatil !== null && dataDeatil.role_id ? dataDeatil.role_id : null}>
-                                {dataDeatil && dataDeatil !== null && dataDeatil.role_table.name ? dataDeatil.role_table.name : null}
+                                {dataDeatil && dataDeatil !== null && dataDeatil.role.name ? dataDeatil.role.name : null}
                                 </option>
                                 {listRole && listRole.map((item) => (
                                   dataDeatil && dataDeatil.role_id && item.id === dataDeatil.role_id ? null : (

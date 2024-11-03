@@ -194,6 +194,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
+        App\Providers\FirebaseServiceProvider::class,
+        App\Providers\TwilioServiceProvider::class,
     ],
 
     /*
