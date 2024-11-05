@@ -11,7 +11,6 @@ class Firebase
 
     public function __construct()
     {
-        // Khởi tạo Firebase Storage
         $this->storage = (new Factory)
             ->withServiceAccount(env('FIREBASE_CREDENTIALS'))
             ->withDatabaseUri(env('FIREBASE_DATABASE_URL'))

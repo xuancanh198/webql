@@ -126,24 +126,26 @@ class BaseRequest extends FormRequest
         ];
     }
     protected function initializeMessages()
-    {
-        $this->defaultMessages = [
-            'required' => trans('message.required'),
-            'email' => trans('message.email'),
-            'max' => trans('message.max'),
-            'min' => trans('message.min'),
-            'integer' =>trans('message.integer'),
-            'string' => trans('message.string'),
-            'date' => trans('message.date'),
-            'unique' => trans('message.unique'),
-            'in' => trans('message.in'),
-            'exists' => trans('message.exists'),
-            'file' => trans('message.file'),
-            'image' => trans('message.image'),
-            'regex' => trans('message.regex'),
-        ];
-    }
-
+{
+    $this->defaultMessages = [
+        'required' => trans('message.required'),
+        'email' => trans('message.email'),
+        'max' => trans('message.max'),
+        'min' => trans('message.min'),
+        'integer' => trans('message.integer'),
+        'string' => trans('message.string'),
+        'date' => trans('message.date'),
+        'unique' => trans('message.unique'),
+        'in' => trans('message.in'),
+        'exists' => trans('message.exists'),
+        'file' => trans('message.file'),
+        'image' => trans('message.image'),
+        'regex' => trans('message.regex'),
+        'before' => trans('message.before'),
+        'before_or_equal' => trans('message.before_or_equal'),
+        'nullable' => trans('message.nullable'),
+    ];
+}
     public function generateMessages(array $rules)
     {
         $messages = [];

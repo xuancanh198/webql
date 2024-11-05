@@ -96,7 +96,7 @@ function List({ data }) {
     if (dataDeatil && dataDeatil !== null) {
       setInitialValues({
         username: dataDeatil.username || '',
-        passwordDefault: dataDeatil.password_default || '',
+        passwordDefault: dataDeatil.defaultPassword || '',
         fullname: dataDeatil.fullname || '',
         address: dataDeatil.address || '',
         identificationCard: dataDeatil.identificationCard || 1,

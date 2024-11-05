@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Room\FloorController;
 use App\Http\Controllers\Admin\Room\ServiceController;
 use App\Http\Controllers\Admin\Room\FurnitureController;
 use App\Http\Controllers\Admin\Staff\RoleController;
+use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Admin\Permisstion\PermisstionController;
 use App\Http\Controllers\Admin\Permisstion\ActionController;
 use App\Http\Controllers\Admin\Staff\AuthController;
@@ -26,6 +27,14 @@ Route::middleware(['admin.middleware'])->group(function () {
                 Route::post('/', [StaffController::class, 'store']);
                 Route::put('/{id}', [StaffController::class, 'update']);
                 Route::delete('/{id}', [StaffController::class, 'destroy']);
+            });
+        });
+        Route::group(['prefix' => 'user'], function () {
+            Route::group(['prefix' => 'user'], function () {
+                Route::get('/', [UserController::class, 'index']);
+                Route::post('/', [UserController::class, 'store']);
+                Route::put('/{id}', [UserController::class, 'update']);
+                Route::delete('/{id}', [UserController::class, 'destroy']);
             });
         });
         Route::group(['prefix' => 'permission'], function () {
